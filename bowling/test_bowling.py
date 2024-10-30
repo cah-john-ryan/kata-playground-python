@@ -71,11 +71,17 @@ def test_strike_and_spare_combination(subject):
     assert subject.score() == 20 + 14 + 8, "The score should be correct for when a strike and spare are present"
 
 def test_perfect_game(subject):
-    for _ in range(10):
+    for _ in range(9):
         subject.throw(10)
+    subject.throw(10) # frame 10
+    subject.throw(10)
+    subject.throw(10)
     assert subject.score() == 300, "The score should be 300 for a perfect game"
 
 def test_all_spare(subject):
-    for _ in range(10):
+    for _ in range(9):
         throw_spare(subject, 5)
-    assert subject.score() == 150, "The score should be 150 for a all spare"
+    subject.throw(5) # frame 10
+    subject.throw(5)
+    subject.throw(5)
+    assert subject.score() == 150, "The score should be 150 for a all spares in a game"

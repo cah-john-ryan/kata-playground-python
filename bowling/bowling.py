@@ -18,8 +18,6 @@ class Bowling:
             else:
                 total_score += self.get_total_pins_in_frame(throws_index)
                 throws_index += 2
-
-        # 10 frame
         return total_score
 
     def get_spare_bonus(self, throws_index):
